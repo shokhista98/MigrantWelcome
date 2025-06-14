@@ -1,0 +1,98 @@
+You are an expert web developer. Your task is to create the foundational HTML, CSS, and JavaScript for a Replit project based on the provided Korean project document: "대전시 외국인 주민을 위한 웹사이트 구축 프로젝트."
+
+The website aims to be an Information & Referral (I&R) hub for foreign residents in Daejeon, South Korea.
+
+**Project Title:** Website for Foreign Residents in Daejeon
+
+**Core Requirements (from the document):**
+
+1.  **Target Audience:** Foreign residents in Daejeon, particularly:
+    *   Students (유학생)
+    *   Foreign Workers (외국인근로자)
+    *   Marriage Immigrants (결혼이민자)
+2.  **Purpose:** Help foreign residents settle, minimize daily life inconveniences, and provide practical, integrated living information and connections to relevant services.
+3.  **Key Design Considerations (from Section 5.1):**
+    *   **Multilingual Support:** Initially, implement a simple language switcher for Korean (기본) and English. Add placeholders for future languages like Vietnamese and Chinese.
+    *   **High Design Flexibility & UX:** The design should be intuitive, visually clear, and easy to navigate, especially for those not fluent in Korean. Avoid complex menus. Use images/icons where helpful.
+    *   **Easy External Linking:** Key function is to link to external resources. Present these links clearly.
+    *   **Ease of Maintenance:** Structure the code cleanly for future updates.
+
+**Website Structure & Pages (based on "목차" and Sections 3 & 4):**
+
+**I. Overall Layout:**
+    *   **Header:**
+        *   Site Title/Logo (e.g., "Welcome to Daejeon for Foreign Residents")
+        *   Navigation Menu (links to main sections)
+        *   Language Switcher (Dropdown: Korean / English)
+    *   **Main Content Area:** To display content of the selected page.
+    *   **Footer:**
+        *   Copyright information (e.g., "© 2024 Project Team - [Your Names from Document Title: 셔흐스타, 주연희, 김하늘]")
+        *   Link to a "Feedback/Contact Us" (placeholder for now).
+
+**II. Main Navigation & Content Pages (create separate HTML files if appropriate, or use JS to load content dynamically):**
+
+    *   **1. Home (`index.html`):**
+        *   Welcoming message.
+        *   Brief overview of the website's purpose.
+        *   Quick links or featured categories.
+
+    *   **2. Service Target (서비스 대상 설정 - `service_target.html` or section on About page):**
+        *   Briefly explain who the website is for, referencing:
+            *   1.1 Definition of 'Foreign Resident' (외국인 주민의 정의)
+            *   1.2 Core Target Audience (서비스 핵심 대상 설정 - students, workers, marriage immigrants)
+
+    *   **3. Categories & Links (카테고리별 링크 - This is the CORE of the site. Use card-style elements for each link, showing the name and a brief description/purpose of the external site):**
+
+        *   **3.1 General Information (일반 - `general_info.html`):**
+            *   대전광역시 외국인주민 통합지원센터 (https://www.dic.or.kr/kor/main/) - Daejeon Foreign Resident Support Center: Comprehensive support, counseling, Korean education, cultural experiences.
+            *   Living in Daejeon (http://www.livingindaejeon.or.kr/main) - Cultural facilities, attractions, events, living/visa info.
+            *   대한외국인지원센터 (https://kfsc2020.modoo.at/?link=b9v4q86y) - Korea Foreigner Support Center: Cultural activities, education, counseling.
+            *   정부24 외국인서비스 (https://www.gov.kr/portal/foreigner/ko) - Gov24 Foreigner Service: Visa/residency management, civil applications, benefit info.
+            *   파파야스토리 (https://papayastory.com/) - Papaya Story: News on living, welfare, childcare, employment, events for foreigners by region.
+            *   Korea.net (https://www.korea.net/) - Official portal: Korean policies, society, culture, tourism, news.
+            *   한국유학종합시스템 (Study in Korea) (https://www.studyinkorea.go.kr/ko/main.do) - Study in Korea: Info on Korean life, education, scholarships, university search.
+
+        *   **3.2 Language & Education (언어 및 교육 - `language_education.html`):**
+            *   온라인 세종학당 (https://www.iksi.or.kr/lms/main/main.do) - Online Sejong Hakdang: Online Korean language courses, cultural content.
+            *   EPS-TOPIK (https://epstopik.hrdkorea.or.kr/epstopik/home/main/mainPage.do?lang=ko) - EPS-TOPIK: Test info, application, Korean study materials for employment permit system.
+            *   TOPIK (https://www.topik.go.kr/TWMAIN/TWMAIN0010.do) - TOPIK (Test of Proficiency in Korean): Test info, application, results, study materials.
+            *   큐넷 (https://www.q-net.or.kr/man001.do?gSite=Q) - Q-Net: National technical/professional qualification test info.
+            *   사회통합프로그램 (KIIP) (https://www.socinet.go.kr/soci/main/main.jsp?MENU_TYPE=S_TOP_SY) - KIIP (Korea Immigration and Integration Program): Korean language and culture education for integration.
+            *   한남대학교 한국어교육원 (http://cklks.hnu.kr/kor/main/) - Hannam University Korean Language Institute.
+            *   충남대학교 국제언어교육센터 (https://dream.cnu.ac.kr/index.php) - Chungnam National University International Language Education Center.
+            *   국립한밭대학교 국제교류원 (https://www.hanbat.ac.kr/global/) - Hanbat National University International Office.
+            *   KAIST Language Center (https://lang.kaist.ac.kr/) - KAIST Language Center.
+            *   목원대학교 한국어교육원 (https://www.mokwon.ac.kr/klec/) - Mokwon University Korean Language Education Center.
+            *   배재대학교 한국어교육원 (https://pcu.ac.kr/eckfl) - Paichai University Korean Language Education Center.
+            *   우송대학교 한국어교육원 (https://wkli.wsu.ac.kr/story/main/index.jsp) - Woosong University Korean Language Institute.
+            *   대전보건대학교 국제교류원 (https://www.hit.ac.kr/global/main) - Daejeon Health University International Exchange Institute.
+
+        *   **3.3 Family & Childcare (가족 및 육아 - `family_childcare.html`):**
+            *   대전광역시 임신·출산 행복꾸러미 (https://www.daejeon.go.kr/djbaby/index.do) - Daejeon Pregnancy/Childbirth Happiness Bundle: Info, benefits for pregnant women in Daejeon.
+            *   임신육아종합포털 아이사랑 (https://www.childcare.go.kr/?menuno=1) - i-Sarang Childcare Portal: Pregnancy/childcare info, benefits, daycare search.
+            *   아이돌봄서비스 (https://www.idolbom.go.kr/front/) - Idolbom Childcare Service: In-home care for children up to 12.
+            *   유치원입학관리시스템 (https://www.go-firstschool.go.kr/PAMSSS/selectHm10mGridList.do) - Kindergarten Admission System: Online search and application for kindergartens.
+            *   지역아동센터대전지원단 (http://www.djcareinfo.info/app/main/index) - Daejeon Community Child Center Support Unit: Info on local child centers, application guidance.
+            *   대전광역시교육청 방과후학교·돌봄지원센터 (https://as.dje.go.kr/kr/index.do) - Daejeon Metropolitan Office of Education After-School & Care Support Center: Information on operations and programs.
+            *   다문화교육포털 (https://www.edu4mc.or.kr/) - Multicultural Education Portal: Support, resources for multicultural students and parents.
+            *   대전시 가족센터 (https://daejeon.familynet.or.kr/center/index.do) - Daejeon Family Center: Education/childcare programs, community groups, counseling.
+            *   다문화 가족지원 포털 다누리 (https://www.liveinkorea.kr/portal/KOR/main/main.do) - Danuri Portal: Multilingual learning, education/employment info, family center programs for multicultural families.
+            *   한국이주여성인권센터 (https://litt.ly/wmigrant) - Korea Women Migrants Human Rights Center: Emergency support, legal counseling for migrant women.
+            *   우리다문화장학재단 (https://www.woorifoundation.or.kr/html/main) - Woori Multicultural Scholarship Foundation: Scholarships for multicultural children, self-development programs.
+            *   아가랑도서관 (https://lib.yuseong.go.kr/web/menu/10095/program/30010/lectureList.do?...) - Agarang Library (Yuseong): Events and education programs for multicultural families.
+
+        *   **3.4 Living Guide (생활안내 - `living_guide.html`):**
+            *   (This section was in the ToC but no specific links were provided in section 4. Create a placeholder page. Content can include general tips, emergency numbers, transportation, housing advice - can be filled later).
+
+    *   **4. Website Builder Selection Info (웹사이트 빌더 선정 - `builder_info.html` or section on About page - optional, for project context):**
+        *   Briefly mention the considerations (5.1 from the document) if you want to include project context.
+
+    *   **5. Website Concept (웹사이트 구상 - `concept.html` - optional):**
+        *   This section from the document could be a brief "Our Vision" or "Project Goals" page.
+
+**Technology Stack for Replit:**
+*   **HTML5:** For structure.
+*   **CSS3:** For styling. Consider using a simple CSS framework like Bootstrap (CDN link) or a custom stylesheet. Make it responsive.
+*   **JavaScript (Vanilla JS):** For the language switcher and any minor interactive elements.
+
+**File Structure (suggested):**
