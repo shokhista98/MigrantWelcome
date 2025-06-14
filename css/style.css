@@ -293,6 +293,31 @@ footer a:hover {
     transition: opacity 0.3s ease;
 }
 
+/* Default language visibility - hide English by default */
+[lang="en"] {
+    display: none !important;
+}
+
+/* Show only when HTML has English language class */
+html[lang="en"] [lang="en"] {
+    display: block !important;
+}
+
+html[lang="en"] [lang="ko"] {
+    display: none !important;
+}
+
+/* For inline elements */
+html[lang="en"] span[lang="en"],
+html[lang="en"] small[lang="en"] {
+    display: inline !important;
+}
+
+html[lang="en"] span[lang="ko"],
+html[lang="en"] small[lang="ko"] {
+    display: none !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-section {
