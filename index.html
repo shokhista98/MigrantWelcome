@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title lang="ko">대전시 외국인 주민 정보 포털</title>
+    <title lang="en" style="display:none;">Daejeon Foreign Residents Information Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-home text-primary me-2"></i>
+                <span lang="ko">대전시 외국인 주민 포털</span>
+                <span lang="en" style="display:none;">Daejeon Foreign Residents Portal</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <span lang="ko">홈</span>
+                            <span lang="en" style="display:none;">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="general_info.html">
+                            <span lang="ko">일반정보</span>
+                            <span lang="en" style="display:none;">General Info</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="language_education.html">
+                            <span lang="ko">언어 및 교육</span>
+                            <span lang="en" style="display:none;">Language & Education</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="family_childcare.html">
+                            <span lang="ko">가족 및 육아</span>
+                            <span lang="en" style="display:none;">Family & Childcare</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="living_guide.html">
+                            <span lang="ko">생활안내</span>
+                            <span lang="en" style="display:none;">Living Guide</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <span lang="ko">소개</span>
+                            <span lang="en" style="display:none;">About</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="language-switcher">
+                    <select id="languageSelect" class="form-select form-select-sm">
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <!-- Hero Section -->
+        <div class="hero-section text-center mb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold text-primary mb-4">
+                        <span lang="ko">대전시 외국인 주민을 위한 정보 포털</span>
+                        <span lang="en" style="display:none;">Information Portal for Foreign Residents in Daejeon</span>
+                    </h1>
+                    <p class="lead mb-4">
+                        <span lang="ko">대전에 거주하는 외국인 주민들을 위한 종합 정보 및 지원 서비스 안내</span>
+                        <span lang="en" style="display:none;">Comprehensive information and support services for foreign residents living in Daejeon</span>
+                    </p>
+                    <div class="hero-badges">
+                        <span class="badge bg-primary me-2">
+                            <span lang="ko">유학생</span>
+                            <span lang="en" style="display:none;">Students</span>
+                        </span>
+                        <span class="badge bg-success me-2">
+                            <span lang="ko">외국인근로자</span>
+                            <span lang="en" style="display:none;">Foreign Workers</span>
+                        </span>
+                        <span class="badge bg-info">
+                            <span lang="ko">결혼이민자</span>
+                            <span lang="en" style="display:none;">Marriage Immigrants</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Access Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 quick-access-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-info-circle fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">
+                            <span lang="ko">일반정보</span>
+                            <span lang="en" style="display:none;">General Info</span>
+                        </h5>
+                        <p class="card-text">
+                            <span lang="ko">기본적인 생활 정보와 지원 센터</span>
+                            <span lang="en" style="display:none;">Basic living information and support centers</span>
+                        </p>
+                        <a href="general_info.html" class="btn btn-primary">
+                            <span lang="ko">보기</span>
+                            <span lang="en" style="display:none;">View</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 quick-access-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-graduation-cap fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">
+                            <span lang="ko">언어 및 교육</span>
+                            <span lang="en" style="display:none;">Language & Education</span>
+                        </h5>
+                        <p class="card-text">
+                            <span lang="ko">한국어 학습과 교육 기관 정보</span>
+                            <span lang="en" style="display:none;">Korean language learning and educational institutions</span>
+                        </p>
+                        <a href="language_education.html" class="btn btn-success">
+                            <span lang="ko">보기</span>
+                            <span lang="en" style="display:none;">View</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 quick-access-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">
+                            <span lang="ko">가족 및 육아</span>
+                            <span lang="en" style="display:none;">Family & Childcare</span>
+                        </h5>
+                        <p class="card-text">
+                            <span lang="ko">출산, 육아, 다문화 가족 지원</span>
+                            <span lang="en" style="display:none;">Childbirth, childcare, multicultural family support</span>
+                        </p>
+                        <a href="family_childcare.html" class="btn btn-info">
+                            <span lang="ko">보기</span>
+                            <span lang="en" style="display:none;">View</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 quick-access-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-map-marker-alt fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">
+                            <span lang="ko">생활안내</span>
+                            <span lang="en" style="display:none;">Living Guide</span>
+                        </h5>
+                        <p class="card-text">
+                            <span lang="ko">일상생활 편의 정보와 가이드</span>
+                            <span lang="en" style="display:none;">Daily life convenience information and guides</span>
+                        </p>
+                        <a href="living_guide.html" class="btn btn-warning">
+                            <span lang="ko">보기</span>
+                            <span lang="en" style="display:none;">View</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Resources -->
+        <div class="featured-section">
+            <h2 class="text-center mb-4">
+                <span lang="ko">주요 지원 기관</span>
+                <span lang="en" style="display:none;">Key Support Organizations</span>
+            </h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-building fa-2x text-primary me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">
+                                        <span lang="ko">대전광역시 외국인주민 통합지원센터</span>
+                                        <span lang="en" style="display:none;">Daejeon Foreign Resident Support Center</span>
+                                    </h5>
+                                    <small class="text-muted">
+                                        <span lang="ko">종합 지원, 상담, 한국어 교육, 문화 체험</span>
+                                        <span lang="en" style="display:none;">Comprehensive support, counseling, Korean education, cultural experiences</span>
+                                    </small>
+                                </div>
+                            </div>
+                            <a href="https://www.dic.or.kr/kor/main/" target="_blank" class="btn btn-outline-primary btn-sm">
+                                <span lang="ko">방문하기</span>
+                                <span lang="en" style="display:none;">Visit</span>
+                                <i class="fas fa-external-link-alt ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-globe fa-2x text-success me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">
+                                        <span lang="ko">Living in Daejeon</span>
+                                        <span lang="en" style="display:none;">Living in Daejeon</span>
+                                    </h5>
+                                    <small class="text-muted">
+                                        <span lang="ko">문화시설, 관광명소, 행사, 생활/비자 정보</span>
+                                        <span lang="en" style="display:none;">Cultural facilities, attractions, events, living/visa info</span>
+                                    </small>
+                                </div>
+                            </div>
+                            <a href="http://www.livingindaejeon.or.kr/main" target="_blank" class="btn btn-outline-success btn-sm">
+                                <span lang="ko">방문하기</span>
+                                <span lang="en" style="display:none;">Visit</span>
+                                <i class="fas fa-external-link-alt ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="mb-2">
+                        <span lang="ko">© 2024 대전시 외국인 주민 정보 포털 - 셔흐스타, 주연희, 김하늘</span>
+                        <span lang="en" style="display:none;">© 2024 Daejeon Foreign Residents Information Portal - Shakhsta, Ju Yeonhui, Kim Haneul</span>
+                    </p>
+                    <small class="text-muted">
+                        <span lang="ko">대전시 외국인 주민의 정착과 생활 편의를 위한 정보 제공</span>
+                        <span lang="en" style="display:none;">Providing information for the settlement and living convenience of foreign residents in Daejeon</span>
+                    </small>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <a href="#" class="text-decoration-none me-3">
+                        <span lang="ko">피드백</span>
+                        <span lang="en" style="display:none;">Feedback</span>
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                        <span lang="ko">문의하기</span>
+                        <span lang="en" style="display:none;">Contact Us</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
