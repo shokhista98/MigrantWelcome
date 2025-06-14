@@ -65,20 +65,28 @@ function switchLanguage(language) {
     // Update current language
     currentLanguage = language;
     
-    // Update HTML lang attribute - this triggers CSS language switching
-    document.documentElement.lang = language;
+    // Hide all language elements
+    supportedLanguages.forEach(lang => {
+        const elements = document.querySelectorAll(`[lang="${lang}"]`);
+        elements.forEach(element => {
+            if (lang === language) {
+                element.style.display = '';
+                element.style.opacity = '1';
+            } else {
+                element.style.display = 'none';
+                element.style.opacity = '0';
+            }
+        });
+    });
     
-    // Update page title based on current language
+    // Update page title
     updatePageTitle(language);
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = language;
     
     // Save language preference
     saveLanguagePreference(language);
-    
-    // Update language selector
-    const languageSelect = document.getElementById('languageSelect');
-    if (languageSelect && languageSelect.value !== language) {
-        languageSelect.value = language;
-    }
     
     // Trigger custom event for language change
     const event = new CustomEvent('languageChanged', {
