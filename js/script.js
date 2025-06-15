@@ -7,6 +7,10 @@
 let currentLanguage = 'ko'; // Default language
 const supportedLanguages = ['ko', 'en'];
 
+const IS_GITHUB_PAGES = window.location.hostname.endsWith('github.io');
+const REPO_NAME = IS_GITHUB_PAGES ? window.location.pathname.split('/')[1] : ''; // Extracts the first segment after hostname
+const basePath = IS_GITHUB_PAGES && REPO_NAME ? `/${REPO_NAME}` : '';
+
 // DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
@@ -23,8 +27,8 @@ async function initializeApp() {
 
     // 2. Load reusable HTML components.
     // The switchLanguage call inside loadHTML for footer will use the correctly set global currentLanguage.
-    await loadHTML('./_footer.html', 'footer-placeholder');
-    await loadHTML('./_modal_contact.html', 'contactModal', (success) => {
+    await loadHTML('_footer.html', 'footer-placeholder');
+    await loadHTML('_modal_contact.html', 'contactModal', (success) => {
         if (success) {
             initializeContactForm(); // Initialize form logic AFTER modal content is loaded
         } else {
@@ -195,22 +199,28 @@ async function loadHTML(filePath, placeholderId, callback) {
         return;
     }
 
+    // Prepend basePath to the filePath
+    const fullPath = basePath + filePath.startsWith('/') ? filePath : '/' + filePath;
+    // Ensure filePath doesn't start with './' if basePath is used, or adjust logic
+    // A simpler way if filePath is always like './_footer.html':
+    // const fullPath = basePath + '/' + filePath.replace(/^\.\//, ''); // Removes leading './'
+
+    console.log(`Fetching HTML from: ${fullPath}`); // For debugging
+
     try {
-        const response = await fetch(filePath);
+        const response = await fetch(fullPath); // Use fullPath
         if (!response.ok) {
-            throw new Error(`Failed to load ${filePath}: ${response.status} ${response.statusText}`);
+            throw new Error(`Failed to load ${fullPath}: ${response.status} ${response.statusText}`);
         }
         const htmlContent = await response.text();
         placeholder.innerHTML = htmlContent;
 
-        // Re-apply current language to the newly loaded content
-        // This ensures spans within footer/modal are correctly displayed
         switchLanguage(currentLanguage);
 
         if (callback) callback(true);
     } catch (error) {
-        console.error(`Error loading HTML into #${placeholderId} from ${filePath}:`, error);
-        placeholder.innerHTML = `<p class="text-danger">Error loading content from ${filePath}.</p>`;
+        console.error(`Error loading HTML into #${placeholderId} from ${fullPath}:`, error);
+        placeholder.innerHTML = `<p class="text-danger">Error loading content from ${fullPath}.</p>`;
         if (callback) callback(false);
     }
 }
