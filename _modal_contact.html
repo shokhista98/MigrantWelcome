@@ -1,0 +1,61 @@
+<!-- ./_modal_contact.html -->
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">
+              <span lang="ko">문의 / 피드백</span>
+              <span lang="en">Contact Us / Feedback</span>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form id="contactForm">
+              <div class="mb-3">
+                  <label for="contactName" class="form-label">
+                      <span lang="ko">이름</span><span lang="en">Name</span>
+                  </label>
+                  <input type="text" class="form-control" id="contactName" required>
+              </div>
+              <div class="mb-3">
+                  <label for="contactEmail" class="form-label">
+                      <span lang="ko">이메일</span><span lang="en">Email</span>
+                  </label>
+                  <input type="email" class="form-control" id="contactEmail" required>
+              </div>
+              <div class="mb-3">
+                  <label for="contactSubject" class="form-label">
+                      <span lang="ko">제목</span><span lang="en">Subject</span>
+                  </label>
+                  <select class="form-select" id="contactSubject">
+                      <option value="feedback" lang="ko">피드백</option>
+                      <option value="feedback" lang="en">Feedback</option>
+                      <option value="inquiry" lang="ko">일반 문의</option>
+                      <option value="inquiry" lang="en">General Inquiry</option>
+                      <option value="issue" lang="ko">문제 신고</option>
+                      <option value="issue" lang="en">Report an Issue</option>
+                      <option value="other" lang="ko">기타</option>
+                      <option value="other" lang="en">Other</option>
+                  </select>
+              </div>
+              <div class="mb-3">
+                  <label for="contactMessage" class="form-label">
+                      <span lang="ko">메시지</span><span lang="en">Message</span>
+                  </label>
+                  <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+              </div>
+              <div class="form-text mb-3">
+                  <span lang="ko">이 양식은 실제 전송 기능이 없습니다. 데모용입니다.</span>
+                  <span lang="en">This form does not actually send data. It is for demonstration purposes.</span>
+              </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <span lang="ko">닫기</span><span lang="en">Close</span>
+          </button>
+          <button type="submit" form="contactForm" class="btn btn-primary">
+              <span lang="ko">보내기</span><span lang="en">Send</span>
+          </button>
+      </div>
+  </div>
+</div>

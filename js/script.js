@@ -74,6 +74,36 @@ function switchLanguage(language) {
     // Save language preference
     saveLanguagePreference(language);
     
+    // Specifically update subject options in the modal
+    const subjectSelect = document.getElementById('contactSubject');
+    if (subjectSelect) {
+        const options = subjectSelect.querySelectorAll('option');
+        let anOptionWasSelected = false;
+        options.forEach(option => {
+            if (option.getAttribute('lang') === language) {
+                option.style.display = ''; // Show
+                if(!anOptionWasSelected && subjectSelect.value !== option.value) {
+                    // If current selection is hidden, try to select the first visible one
+                    // This is a basic way, might need refinement based on exact UX desired
+                }
+            } else if (option.getAttribute('lang')) { // if it has a lang attribute and it's not the current one
+                option.style.display = 'none'; // Hide
+            }
+        });
+
+        // Ensure at least one option is visible and selected if possible
+        let firstVisibleValue = null;
+        for(let opt of options) {
+            if(opt.style.display !== 'none') {
+                firstVisibleValue = opt.value;
+                break;
+            }
+        }
+        if(subjectSelect.selectedOptions.length === 0 || subjectSelect.selectedOptions[0].style.display === 'none') {
+            if(firstVisibleValue) subjectSelect.value = firstVisibleValue;
+        }
+    }
+
     // Update language selector
     const languageSelect = document.getElementById('languageSelect');
     if (languageSelect && languageSelect.value !== language) {
@@ -411,13 +441,145 @@ function throttle(func, limit) {
     };
 }
 
+/**
+ * Load and inject HTML content from a file into a placeholder.
+ * @param {string} filePath - Path to the HTML file to load.
+ * @param {string} placeholderId - ID of the element to inject HTML into.
+ */
+async function loadHTML(filePath, placeholderId) {
+    const placeholder = document.getElementById(placeholderId);
+    if (!placeholder) {
+        console.error(`Placeholder element with ID '${placeholderId}' not found.`);
+        return;
+    }
+
+    try {
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            throw new Error(`Failed to load ${filePath}: ${response.status} ${response.statusText}`);
+        }
+        const htmlContent = await response.text();
+        placeholder.innerHTML = htmlContent;
+
+        // After loading footer, re-apply language switch to its content
+        // This is important because the footer content is added AFTER initial language setup
+        if (placeholderId === 'footer-placeholder') {
+           switchLanguage(currentLanguage); // Re-apply current language to newly added content
+        }
+
+    } catch (error) {
+        console.error('Error loading HTML:', error);
+        placeholder.innerHTML = `<p class="text-danger">Error loading content from ${filePath}.</p>`;
+    }
+}
+
+/**
+ * Initialize contact form functionality
+ */
+function initializeContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    const contactModalElement = document.getElementById('contactModal');
+    let contactModalInstance;
+
+    if (!contactModalElement) {
+        console.error("Modal element #contactModal not found in the DOM!");
+        return; // Exit if modal HTML isn't there
+    }
+
+    if (contactModalElement) {
+        contactModalInstance = new bootstrap.Modal(contactModalElement);
+    }
+
+
+    if (contactForm && contactModalInstance) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+
+            // Basic validation (Bootstrap's `required` handles some of this)
+            if (!name || !email || !message) {
+                alert(currentLanguage === 'ko' ? '이름, 이메일, 메시지를 모두 입력해주세요.' : 'Please fill in Name, Email, and Message.');
+                return;
+            }
+
+            console.log('Form Submitted (Demo):');
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Subject:', subject);
+            console.log('Message:', message);
+
+            // Here you would typically send the data to a server using fetch() or XMLHttpRequest
+            // For demo purposes, we'll just show an alert and close the modal.
+
+            alert(currentLanguage === 'ko' ? '메시지가 (데모로) 전송되었습니다. 감사합니다!' : 'Your message has been (demo) sent. Thank you!');
+
+            contactForm.reset(); // Clear the form
+            contactModalInstance.hide(); // Close the modal
+        });
+    }
+
+    // Optional: Pre-select subject if triggered by specific buttons
+    // This requires adding data attributes to your trigger buttons/links
+    if (contactModalElement) {
+        contactModalElement.addEventListener('show.bs.modal', function (event) {
+            // event.relatedTarget is the button that triggered the modal
+            const triggerButton = event.relatedTarget;
+            if (triggerButton) {
+                const subjectType = triggerButton.getAttribute('data-form-subject'); // e.g., "feedback" or "inquiry"
+                const subjectSelect = document.getElementById('contactSubject');
+                if (subjectType && subjectSelect) {
+                    subjectSelect.value = subjectType;
+                } else if (subjectSelect) {
+                    // Default to feedback if no specific subject is passed
+                    subjectSelect.value = "feedback";
+                }
+            }
+        });
+    }
+}
+
+
+/**
+ * Initialize the application
+ */
+async function initializeApp() {
+    // Load common components like header and footer
+    await loadHTML('./_footer.html', 'footer-placeholder'); // Or '../_footer.html' if _footer.html is in root and script.js in js/
+    // You could do the same for a header: loadHTML('./_header.html', 'header-placeholder');
+
+    // Load modal content, then initialize its form logic
+    await loadHTML('./_modal_contact.html', 'contactModal', (success) => {
+        if (success) {
+            initializeContactForm(); // Initialize form AFTER modal content is loaded
+        } else {
+            console.error("Failed to load modal content, contact form not initialized.");
+        }
+    });
+
+    // Initialize language switcher
+    initializeLanguageSwitcher();
+
+    // Initialize smooth scrolling
+    initializeSmoothScrolling();
+
+    // Initialize card animations
+    initializeCardAnimations();
+
+    // Initialize accessibility features
+    initializeAccessibility();
+
+    // Load saved language preference
+    loadLanguagePreference(); // This will also call switchLanguage internally
+    console.log('Daejeon Foreign Residents Portal initialized successfully');
+}
+
 // Initialize additional features when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    handleExternalLinks();
-    initializeNavigation();
-    initializeSearch();
-    initializeForms();
-    initializeTooltips();
+    initializeApp();
 });
 
 // Handle window resize events

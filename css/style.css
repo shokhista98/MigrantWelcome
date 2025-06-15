@@ -61,6 +61,71 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Method 1: Background on individual text elements */
+.page-header-title-bg,
+.page-header-lead-bg {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    /* Or a dark shade of your primary color: rgba(13, 110, 253, 0.6); */
+    color: white; /* Ensure text is white on this dark background */
+    padding: 0.5rem 1rem; /* Add some padding around the text */
+    display: inline-block; /* To make background only wrap the text content */
+    border-radius: var(--border-radius); /* Optional: rounded corners for the text background */
+    margin-bottom: 0.5rem; /* Add some space if needed */
+}
+
+.page-header-title-bg {
+    font-size: 2.5rem; /* Or your desired h1 size */
+    margin-bottom: 1rem; /* Space between title and lead */
+}
+
+.page-header-lead-bg {
+    font-size: 1.1rem; /* Or your desired lead size */
+    max-width: 800px; /* Limit width of lead paragraph if it's too wide */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* The block that gets the semi-transparent background and contains h1 and p */
+.page-header-text-block {
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent black. Adjust opacity (0.0 to 1.0) */
+    /* Or a dark shade of your primary color: rgba(13, 110, 253, 0.7); */
+    color: white; /* All text inside this block will be white */
+    padding: 1.5rem 2rem; /* Padding inside the text block */
+    display: inline-block; /* Makes the block only as wide as its content, respects text-align of parent */
+    border-radius: var(--border-radius); /* Optional: rounded corners for this text block */
+    max-width: 90%; /* Prevent it from becoming too wide on large screens */
+    /* If you want it to always be a certain width or centered block:
+       display: block;
+       width: 70%; // or max-width: 800px;
+       margin-left: auto;
+       margin-right: auto;
+    */
+}
+
+/* Styling for the H1 inside the text block */
+.page-header-text-block h1 {
+    color: white; /* Explicitly set, though inherited */
+    margin-bottom: 0.75rem; /* Space between H1 and P */
+    font-weight: 600; /* Bootstrap's fw-bold is 700, adjust if needed */
+    /* display-5 is already setting font-size */
+}
+
+/* Styling for the icon inside the H1 */
+.page-header-text-block h1 .fas {
+    color: white; /* Make the icon white */
+    /* Or a light accent color if you prefer, e.g., #87cefa (light blue) */
+    /* font-size: 0.8em; /* Optionally make icon slightly smaller than text */
+    /* margin-right: 0.5rem; /* Already has me-2 */
+}
+
+/* Styling for the P.lead inside the text block */
+.page-header-text-block .lead {
+    color: white; /* Explicitly set, though inherited */
+    margin-bottom: 0; /* No extra margin at the bottom of the lead paragraph */
+    font-size: 1.1rem; /* Adjust if needed, Bootstrap .lead is 1.25rem */
+    font-weight: 300; /* Lighter weight for lead text if desired */
+}
+
 /* Section Headers */
 .section-header {
     border-bottom: 3px solid var(--primary-color);
@@ -72,6 +137,46 @@ body {
     color: var(--primary-color);
     font-weight: 600;
     margin: 0;
+}
+
+.page-banner-container {
+    width: 100%;
+    height: 350px; /* Or desired height */
+    overflow: hidden;
+    position: relative; /* Essential for absolute positioning of overlay */
+    display: flex; /* To help center content */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    text-align: center;
+}
+
+.page-banner-image {
+    position: absolute; /* Take it out of normal flow */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; /* Behind the content */
+}
+
+.banner-overlay-content {
+    position: relative; /* To be on top of the image */
+    z-index: 2;
+    color: white; /* Text color for overlay */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay for readability */
+    border-radius: var(--border-radius);
+    max-width: 800px; /* Limit width of text block */
+}
+
+.banner-overlay-content .page-header-content-only h1,
+.banner-overlay-content .page-header-content-only .lead {
+    color: white; /* Ensure text is white */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* Add shadow for better readability */
+}
+.banner-overlay-content .page-header-content-only .fas { /* Icon color */
+    color: white; /* Or a contrasting accent color */
 }
 
 /* Card Styles */
@@ -288,31 +393,25 @@ footer a:hover {
     color: var(--success-color);
 }
 
-/* Language Switching Animation */
-[lang="ko"], [lang="en"] {
-    transition: opacity 0.3s ease;
+/* Hide English elements if the page is set to Korean (or not explicitly English) */
+/* The html[lang="ko"] selector ensures this applies on initial load if your HTML starts with <html lang="ko"> */
+html:not([lang="en"]) [lang="en"],
+html[lang="ko"] [lang="en"] {
+    display: none !important;
 }
-
-/* Default language visibility - hide English by default */
-[lang="en"] {
+/* Ensure specific inline-type English elements are also hidden */
+html:not([lang="en"]) span[lang="en"],
+html:not([lang="en"]) small[lang="en"],
+html[lang="ko"] span[lang="en"],
+html[lang="ko"] small[lang="en"] {
     display: none !important;
 }
 
-/* Show only when HTML has English language class */
-html[lang="en"] [lang="en"] {
-    display: block !important;
-}
-
+/* Hide Korean elements if the page is set to English */
 html[lang="en"] [lang="ko"] {
     display: none !important;
 }
-
-/* For inline elements */
-html[lang="en"] span[lang="en"],
-html[lang="en"] small[lang="en"] {
-    display: inline !important;
-}
-
+/* Ensure specific inline-type Korean elements are also hidden */
 html[lang="en"] span[lang="ko"],
 html[lang="en"] small[lang="ko"] {
     display: none !important;
@@ -461,4 +560,107 @@ html {
 
 .border-warning-left {
     border-left: 4px solid var(--warning-color);
+}
+
+
+/* ===========================
+   CUSTOM MODAL STYLES
+   =========================== */
+
+/* Ensure the modal itself is part of the overall theme */
+.modal-content {
+    border-radius: var(--border-radius); /* Use your existing border-radius */
+    border: 1px solid #dee2e6; /* A subtle border */
+    box-shadow: var(--box-shadow-hover); /* A slightly more prominent shadow for popups */
+}
+
+/* Modal Header Styling */
+.modal-header {
+    background-color: var(--primary-color); /* Use your primary theme color */
+    color: white;
+    border-bottom: none; /* Remove default bottom border if using a solid background */
+    padding: 1rem 1.5rem;
+    border-top-left-radius: calc(var(--border-radius) - 1px); /* Adjust for border */
+    border-top-right-radius: calc(var(--border-radius) - 1px);
+}
+
+.modal-header .modal-title {
+    font-weight: 600;
+    font-size: 1.25rem; /* Consistent with navbar-brand or page headers */
+}
+
+.modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%); /* Make the 'X' button white */
+    padding: 0.75rem; /* Make it a bit easier to click */
+}
+
+/* Modal Body Styling */
+.modal-body {
+    padding: 1.5rem;
+    font-size: 0.95rem; /* Slightly smaller for form context if desired */
+}
+
+.modal-body .form-label {
+    font-weight: 500;
+    color: #495057; /* A standard dark gray for labels */
+    margin-bottom: 0.3rem;
+}
+
+.modal-body .form-control,
+.modal-body .form-select {
+    border-radius: var(--border-radius);
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.modal-body .form-control:focus,
+.modal-body .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25); /* Bootstrap's focus shadow with your primary color */
+}
+
+.modal-body .form-text { /* The small text at the bottom of the form */
+    font-size: 0.8rem;
+    color: var(--dark-gray);
+}
+
+/* Modal Footer Styling */
+.modal-footer {
+    background-color: var(--light-gray); /* Match footer or a light neutral */
+    border-top: 1px solid #dee2e6;
+    padding: 1rem 1.5rem;
+    border-bottom-left-radius: calc(var(--border-radius) - 1px);
+    border-bottom-right-radius: calc(var(--border-radius) - 1px);
+}
+
+/* Style buttons within the modal footer to match site buttons */
+.modal-footer .btn {
+    min-width: 100px; /* Give buttons a decent minimum width */
+    padding: 0.5rem 1rem;
+}
+
+.modal-footer .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+.modal-footer .btn-primary:hover {
+    background-color: #0056b3; /* Darken primary color on hover */
+    border-color: #0056b3;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d; /* Standard Bootstrap secondary */
+    border-color: #6c757d;
+    color: white;
+}
+.modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Ensure language spans work correctly within the modal */
+#contactModal [lang="ko"],
+#contactModal [lang="en"] {
+    /* Transitions for opacity can be added here if desired,
+       but the current CSS handles display:none/block */
 }
