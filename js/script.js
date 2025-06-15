@@ -202,7 +202,7 @@ async function loadHTML(filePath, placeholderId, callback) {
     console.log('[Debug] Determined APP_BASE_PATH:', basePath);
 
     // Prepend basePath to the filePath
-    const fullPath = basePath + filePath.startsWith('/') ? filePath : '/' + filePath;
+    const fullPath = basePath + (filePath.startsWith('/') ? filePath : '/' + filePath);
     // Ensure filePath doesn't start with './' if basePath is used, or adjust logic
     // A simpler way if filePath is always like './_footer.html':
     // const fullPath = basePath + '/' + filePath.replace(/^\.\//, ''); // Removes leading './'
