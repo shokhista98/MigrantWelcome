@@ -8,9 +8,9 @@ let currentLanguage = 'ko'; // Default language
 const supportedLanguages = ['ko', 'en'];
 
 const IS_GITHUB_PAGES = window.location.hostname.endsWith('github.io');
-const REPO_NAME = 'MigrantWelcome'; // Extracts the first segment after hostname
-const basePath = IS_GITHUB_PAGES && REPO_NAME ? `/${REPO_NAME}/refs/heads/main` : '';
-
+const REPO_NAME = 'MigrantWelcome'; 
+const basePath = IS_GITHUB_PAGES ? `/${REPO_NAME}/refs/heads/main` : '';
+console.log('[Debug] Determined APP_BASE_PATH:', basePath);
 // DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
