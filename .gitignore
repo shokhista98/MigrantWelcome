@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# Thumbnails
+ ._*
+
+ # IDE / Editor specific
+ .vscode/
+ .idea/
+ *.swp
+ *.swo
+
+ # Node modules (if you ever add a build step)
+ # node_modules/
