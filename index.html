@@ -17,7 +17,7 @@
                 <span lang="ko">대전시 외국인 주민 포털</span>
                 <span lang="en">Daejeon Foreign Residents Portal</span>
             </a>
-            
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -72,37 +72,75 @@
         </div>
     </nav>
 
-    <main class="container my-5">
-        <!-- Hero Section -->
-        <div class="hero-section text-center mb-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h1 class="display-4 fw-bold text-primary mb-4">
-                        <span lang="ko">대전시 외국인 주민을 위한 정보 포털</span>
-                        <span lang="en">Information Portal for Foreign Residents in Daejeon</span>
-                    </h1>
-                    <p class="lead mb-4">
-                        <span lang="ko">대전에 거주하는 외국인 주민들을 위한 종합 정보 및 지원 서비스 안내</span>
-                        <span lang="en">Comprehensive information and support services for foreign residents living in Daejeon</span>
-                    </p>
-                    <div class="hero-badges">
-                        <span class="badge bg-primary me-2">
-                            <span lang="ko">유학생</span>
-                            <span lang="en">Students</span>
-                        </span>
-                        <span class="badge bg-success me-2">
-                            <span lang="ko">외국인근로자</span>
-                            <span lang="en">Foreign Workers</span>
-                        </span>
-                        <span class="badge bg-info">
-                            <span lang="ko">결혼이민자</span>
-                            <span lang="en">Marriage Immigrants</span>
-                        </span>
+    <!-- NEW: Homepage Sliding Banner Carousel -->
+    <div id="homePageBannerCarousel" class="carousel slide home-banner-carousel-container" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/deajeon-home-1-1.png" class="d-block w-100 home-banner-image" alt="Homepage Banner Slide 1">
+                <div class="carousel-caption-overlay">
+                    <div class="page-header-text-block">
+                        <h1 class="display-4 fw-bold">
+                            <span lang="ko">대전시 외국인 주민을 위한 정보 포털</span>
+                            <span lang="en">Information Portal for Foreign Residents in Daejeon</span>
+                        </h1>
+                        <p class="lead mb-4">
+                            <span lang="ko">대전에 거주하는 외국인 주민들을 위한 종합 정보 및 지원 서비스 안내</span>
+                            <span lang="en">Comprehensive information and support services for foreign residents living in Daejeon</span>
+                        </p>
+                        <!-- Hero badges if you want them on the banner -->
+                        <div class="hero-badges">
+                             <span class="badge bg-primary me-2"><span lang="ko">유학생</span><span lang="en">Students</span></span>
+                             <span class="badge bg-success me-2"><span lang="ko">외국인근로자</span><span lang="en">Foreign Workers</span></span>
+                             <span class="badge bg-info"><span lang="ko">결혼이민자</span><span lang="en">Marriage Immigrants</span></span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="carousel-item">
+                <img src="images/deajeon-home-2-1.jpg" class="d-block w-100 home-banner-image" alt="Homepage Banner Slide 2">
+                <!-- You can have the same caption overlay or different ones per slide -->
+                <div class="carousel-caption-overlay">
+                     <div class="page-header-text-block">
+                        <h1 class="display-4 fw-bold">
+                            <span lang="ko">새로운 생활, 대전에서</span>
+                            <span lang="en">Your New Life in Daejeon</span>
+                        </h1>
+                        <p class="lead mb-4">
+                            <span lang="ko">필요한 모든 정보를 한 곳에서 찾아보세요.</span>
+                            <span lang="en">Find all the information you need in one place.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="images/deajeon-home-3-2.jpeg" class="d-block w-100 home-banner-image" alt="Homepage Banner Slide 3">
+                 <div class="carousel-caption-overlay">
+                     <div class="page-header-text-block">
+                        <h1 class="display-4 fw-bold">
+                            <span lang="ko">커뮤니티와 연결되세요</span>
+                            <span lang="en">Connect with the Community</span>
+                        </h1>
+                        <p class="lead mb-4">
+                            <span lang="ko">다양한 지원 프로그램과 활동을 안내합니다.</span>
+                            <span lang="en">Discover support programs and activities.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more carousel-item divs for more images -->
         </div>
+        <!-- Controls are hidden by CSS, but Bootstrap might still need them for some JS logic if we don't customize heavily -->
+        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#homePageBannerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#homePageBannerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button> -->
+    </div>
 
+    <main class="container my-5">
         <!-- Quick Access Cards -->
         <div class="row g-4 mb-5">
             <div class="col-md-6 col-lg-3">
