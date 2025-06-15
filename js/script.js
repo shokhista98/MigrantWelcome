@@ -8,7 +8,7 @@ let currentLanguage = 'ko'; // Default language
 const supportedLanguages = ['ko', 'en'];
 
 const IS_GITHUB_PAGES = window.location.hostname.endsWith('github.io');
-const REPO_NAME = IS_GITHUB_PAGES ? window.location.pathname.split('/')[1] : ''; // Extracts the first segment after hostname
+const REPO_NAME = 'MigrantWelcome'; // Extracts the first segment after hostname
 const basePath = IS_GITHUB_PAGES && REPO_NAME ? `/${REPO_NAME}/refs/heads/main` : '';
 
 // DOM Content Loaded Event
